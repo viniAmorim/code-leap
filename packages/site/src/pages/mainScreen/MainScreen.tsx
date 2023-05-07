@@ -46,6 +46,26 @@ function MainScreen({
   label, 
   }: CardProps) {
   const router = useRouter();
+
+  function handlePostHour(date) {
+    const now = new Date(); 
+    const past = new Date(`${date}`); 
+    const diff = Math.abs(now.getTime() - past.getTime()); 
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+    const hours = Math.floor(((diff/1000)/60)/60);
+    const minutes = Math.floor((diff/1000)/60);
+
+    if(days <  1440) {
+      if(minutes > 60) {
+        return `${hours} hours ago`;
+      } else {
+        return `${minutes} minutes ago`;
+      }
+    } else {
+      return `${days} day(s) ago`;
+    }
+  }
   return (
     <Layout>
       <Container>
@@ -193,7 +213,7 @@ function MainScreen({
               <Styled.WrapperCardInfo>
                 <Styled.Info>
                   <Styled.Username>@{post.username}</Styled.Username>
-                  <Styled.HourPost>25 minutes ago</Styled.HourPost>
+                  <Styled.HourPost>{handlePostHour(post.created_datetime)}</Styled.HourPost>
                 </Styled.Info>
               
                 <Styled.Content>{post.content}</Styled.Content>
