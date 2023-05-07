@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useUsername } from "../../hooks/useUsername";
 
 import { Container, Row, Col } from 'react-grid-system';
+import { Waypoint } from 'react-waypoint';
 import { UseFormReturn } from 'react-hook-form';
 import { FaSpinner, FaEdit, FaTrash } from 'react-icons/fa';
 import { Card, Button, FormControl, Input, PostCard, Modal } from '@site/uikit';
@@ -30,6 +31,8 @@ export interface CardProps {
   onSavePost: (values: CardPostFormValues) => void;
   onPostDelete: (id: number) => void;
   onPostEdit: (data: {}) => void;
+  loadMoreData: () => void;
+  hasNextPage: boolean;
   isLoading?: boolean;
   form: UseFormReturn;
   editForm: UseFormReturn;
@@ -42,6 +45,8 @@ function MainScreen({
   onSavePost, 
   onPostDelete,
   onPostEdit,
+  loadMoreData,
+  hasNextPage,
   posts = [],
   isLoading, 
   form, 
@@ -71,6 +76,7 @@ function MainScreen({
       return `${days} day(s) ago`;
     }
   }
+  console.log(posts);
   return (
     <Layout>
       <Container>
@@ -121,7 +127,7 @@ function MainScreen({
             </form>
           </Card>
         </Col>
-        {posts?.results?.map((post) => (
+        {posts?.map((post) => (
           <Col sm={12} md={12}>
             <Styled.PostCard>
               <Styled.WrapperHead>
@@ -227,6 +233,15 @@ function MainScreen({
             </Styled.PostCard>
           </Col>
         ))}
+        {hasNextPage && (
+          <Row justify="center">
+            <Waypoint onEnter={loadMoreData}>
+              <Styled.LoadingSpan>
+                <FaSpinner />
+              </Styled.LoadingSpan>
+            </Waypoint>
+          </Row>
+        )}
        </Row>
       </Container>
     </Layout>

@@ -142,3 +142,8 @@ export const Content = styled.div`
 
   color:${({ theme }) => theme.colors.black};
 `;
+
+export const LoadingSpan = styled.span`
+  margin-bottom: 20px;
+  margin-left: -1000px;
+`;
