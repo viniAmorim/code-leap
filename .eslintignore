@@ -1,0 +1,11 @@
+node_modules/
+coverage/
+scripts/
+packages/uikit/.storybook/
+packages/uikit/coverage/
+packages/uikit/dist/
+packages/uikit/node_modules/
+packages/site/.next/
+packages/site/coverage/
+packages/site/node_modules/
+packages/site/jest.config.js
