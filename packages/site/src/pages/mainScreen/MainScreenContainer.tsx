@@ -119,6 +119,7 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
       onPostEdit={handlePostEdit}
       isLoading={false}
       form={form}
+      editForm={form}
       label={label}
     />
   )

@@ -32,6 +32,7 @@ export interface CardProps {
   onPostEdit: (data: {}) => void;
   isLoading?: boolean;
   form: UseFormReturn;
+  editForm: UseFormReturn;
   label?: string;
   modalRef?: Ref<Modal>;
   posts?: Posts[];
@@ -44,6 +45,7 @@ function MainScreen({
   posts = [],
   isLoading, 
   form, 
+  editForm,
   modalRef,
   label, 
   }: CardProps) {
@@ -150,14 +152,14 @@ function MainScreen({
                     appElement="#__next"
                     ref={modalRef}
                   >
-                    <form onSubmit={form.handleSubmit(onPostEdit)}>
+                    <form onSubmit={editForm?.handleSubmit(onPostEdit)}>
                       <FormControl
-                        error={form.formState.errors?.id?.message}
+                        error={editForm?.formState.errors?.id?.message}
                       >
                         <Input
                           value={post.id}
                           type="hidden"
-                          {...form.register('id', {
+                          {...editForm?.register('id', {
                             required: true,
                             minLength: {
                               value: 5,
@@ -168,12 +170,12 @@ function MainScreen({
                       </FormControl>
                       <FormControl
                         label="Title"
-                        error={form.formState.errors?.title?.message}
+                        error={editForm?.formState.errors?.title?.message}
                       >
                         <Input
                           lable="Title"
                           placeholder="Hello world"
-                          {...form.register('title', {
+                          {...editForm?.register('title', {
                             required: true,
                             minLength: {
                               value: 5,
@@ -184,12 +186,12 @@ function MainScreen({
                       </FormControl>
                       <FormControl
                         label="Content"
-                        error={form.formState.errors?.content?.message}
+                        error={editForm?.formState.errors?.content?.message}
                       >
                         <Input
                           content="content"
                           placeholder="Content here"
-                          {...form.register('content', {
+                          {...editForm?.register('content', {
                             required: true,
                             minLength: {
                               value: 5,
