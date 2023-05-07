@@ -134,16 +134,14 @@ function MainScreen({
                     appElement="#__next"
                     ref={modalRef}
                   >
-                    <form>
-                      <Styled.ButtonContainer>
-                        <Styled.CancelButton isLoading={isLoading}>
-                          Cancel
-                        </Styled.CancelButton>
-                        <Styled.DeleteButton isLoading={isLoading} onClick={() => onPostDelete(post.id)}>
-                          Delete
-                        </Styled.DeleteButton>
-                      </Styled.ButtonContainer>
-                    </form>
+                    <Styled.ButtonContainer>
+                      <Styled.CancelButton isLoading={isLoading}>
+                        Cancel
+                      </Styled.CancelButton>
+                      <Styled.DeleteButton isLoading={isLoading} onClick={() => onPostDelete(post.id)}>
+                        Delete
+                      </Styled.DeleteButton>
+                    </Styled.ButtonContainer>
                   </Modal>
                   <Modal
                     label={<FaEdit />}
