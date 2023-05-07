@@ -1,4 +1,4 @@
-# Corret App Site
+# Code-leap App Site
 
 After clone the project, you should:
 
