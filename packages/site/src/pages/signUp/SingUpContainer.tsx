@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useToasts } from 'react-toast-notifications'; 
+import { useRouter } from 'next/router';
 
 import SignUp from './SignUp';
 
@@ -14,6 +15,7 @@ interface SingUpProps {
 }
 
 function SingUpContainer({ onRefresh, label }: SingUpProps) {
+  const router = useRouter();
   const { addToast } = useToasts();
   const form = useForm();
   const modalRef = useRef<{
@@ -40,7 +42,7 @@ function SingUpContainer({ onRefresh, label }: SingUpProps) {
 
   const handleSignUp = (values: SignUpFormValues) => {
     const { username } = values;
-
+    router.push('/main-screen');
     console.log(username);
   }
 

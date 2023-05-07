@@ -2,16 +2,13 @@ import React from 'react';
 import { ToastProvider } from 'react-toast-notifications';
 
 import { Alert } from '@site/uikit';
-import Amplify from 'aws-amplify';
+
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import theme from '~/themes/theme.json';
 
-import amplifyConfig from '../amplifyConfig';
-
-Amplify.configure(amplifyConfig);
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -23,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
 
   html, body, #__next {
     height: 100%;
+    background: #f8f8f8;
   }
 `;
 

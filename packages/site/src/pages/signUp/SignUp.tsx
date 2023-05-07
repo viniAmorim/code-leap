@@ -1,7 +1,8 @@
 import React, { BaseHTMLAttributes, Ref } from 'react';
 import { UseFormReturn } from 'react-hook-form';
+import { Container, Row, Col } from 'react-grid-system';
 
-import { Modal, FormControl, Button, Input } from '@site/uikit';
+import { Modal, FormControl, Button, Input, Heading } from '@site/uikit';
 
 import * as Styled from './styles';
 
@@ -24,37 +25,36 @@ function SignUp({
   modalRef,
  }: SignUpProps) {
   return (
-    <Modal
-      label="Modal"
-      title="Welcome to CodeLeap network!"
-      width={600}
-      appElement="#__next"
-      ref={modalRef}
-    >
-      <form onSubmit={form.handleSubmit(onSaveUsername)}>
-        <FormControl
-          label="Please enter your username"
-          error={form.formState.errors?.username?.message}
-        >
-          <Input
-            name="username"
-            placeholder="John Doe"
-            {...form.register('username', {
-              required: true,
-              minLength: {
-                value: 5,
-                message: 'Username is required',
-              },
-            })}
-          />
-        </FormControl>
-        <Styled.ButtonContainer>
-          <Button isLoading={isLoading} type="submit">
-            ENTER
-          </Button>
-        </Styled.ButtonContainer>
-      </form>
-    </Modal>
+    <Styled.Container>
+      <Row>
+        <Styled.StyledCol sm={12} md={12}>
+          <Heading size="title">Welcome to CodeLeap network!</Heading>
+          <form onSubmit={form.handleSubmit(onSaveUsername)}>
+            <FormControl
+              label="Please enter your username"
+              error={form.formState.errors?.username?.message}
+            >
+              <Input
+                name="username"
+                placeholder="John Doe"
+                {...form.register('username', {
+                  required: true,
+                  minLength: {
+                    value: 5,
+                    message: 'Username is required',
+                  },
+                })}
+              />
+            </FormControl>
+            <Styled.ButtonContainer>
+              <Button isLoading={isLoading} type="submit">
+                ENTER
+              </Button>
+            </Styled.ButtonContainer>
+          </form>
+        </Styled.StyledCol>
+      </Row>
+    </Styled.Container>
   )
 }
 
