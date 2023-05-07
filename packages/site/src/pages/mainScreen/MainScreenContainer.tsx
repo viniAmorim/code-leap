@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useToasts } from 'react-toast-notifications';
 
+import { useUsername } from "../../hooks/useUsername";
+
 import MainScreen from './MainScreen';
 
 export interface CardPostFormValues {
@@ -11,8 +13,8 @@ export interface CardPostFormValues {
 }
 
 interface MainScreenProps {
-   onRefresh: () => void;
-   label?: string;
+  onRefresh: () => void;
+  label?: string;
 }
 
 interface IRepository {
@@ -24,6 +26,7 @@ interface IRepository {
 }
 
 function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
+  const { username } = useUsername();
   const [posts, setPosts] = useState<IRepository[]>([]);
   const { addToast } = useToasts();
   const form = useForm();
@@ -52,7 +55,7 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
   };
 
   const handleSavePost = (values: CardPostFormValues) => {
-    const { username = "vini", title, content } = values;
+    const { title, content } = values;
 
     fetch("http://dev.codeleap.co.uk/careers/", {
       method: "post",
@@ -61,9 +64,8 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
         'Content-Type': 'application/json'
       },
 
-      //make sure to serialize your JSON body
       body: JSON.stringify({
-        username: username,
+        username: username?.username,
         title: title,
         content: content
       })
@@ -101,7 +103,10 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
-  .then((response) => response.json())
+  .then((response) => {
+    response.json()
+    handlePostSuccess();
+  })
   .then((json) => console.log(json));
   }
 

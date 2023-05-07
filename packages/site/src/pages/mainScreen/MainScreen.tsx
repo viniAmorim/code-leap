@@ -2,6 +2,8 @@ import React, { Ref } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { useUsername } from "../../hooks/useUsername";
+
 import { Container, Row, Col } from 'react-grid-system';
 import { UseFormReturn } from 'react-hook-form';
 import { FaSpinner, FaEdit, FaTrash } from 'react-icons/fa';
@@ -46,6 +48,7 @@ function MainScreen({
   label, 
   }: CardProps) {
   const router = useRouter();
+  const { username } = useUsername();
 
   function handlePostHour(date) {
     const now = new Date(); 
@@ -123,7 +126,7 @@ function MainScreen({
                 <Styled.Title>
                   {post.title}
                 </Styled.Title>
-                <Styled.WrapperButtons>
+                {username?.username == post.username && (<Styled.WrapperButtons>
                   <Modal
                     label={<FaTrash />}
                     title="Are you sure you want to delete this item?"
@@ -208,7 +211,9 @@ function MainScreen({
                     </form>
                   </Modal>
                 </Styled.WrapperButtons>
+              )}
               </Styled.WrapperHead>
+          
 
               <Styled.WrapperCardInfo>
                 <Styled.Info>

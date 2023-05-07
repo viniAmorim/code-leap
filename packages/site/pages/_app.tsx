@@ -1,6 +1,8 @@
 import React from 'react';
 import { ToastProvider } from 'react-toast-notifications';
 
+import { UsernameProvider } from "../src/hooks/useUsername";
+
 import { Alert } from '@site/uikit';
 
 import type { AppProps } from 'next/app';
@@ -26,20 +28,22 @@ const GlobalStyle = createGlobalStyle`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <ToastProvider components={{ Toast: Alert }}>
-        <Head>
-          <title>CodeLeap Network</title>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </ToastProvider>
-    </ThemeProvider>
+    <UsernameProvider>
+      <ThemeProvider theme={theme}>
+        <ToastProvider components={{ Toast: Alert }}>
+          <Head>
+            <title>CodeLeap Network</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
+              rel="stylesheet"
+            />
+          </Head>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </ToastProvider>
+      </ThemeProvider>
+    </UsernameProvider>
   );
 }
 export default MyApp;
