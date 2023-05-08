@@ -19,7 +19,6 @@ interface SingUpProps {
 function SingUpContainer({ onRefresh, label }: SingUpProps) {
   const { createUsername } = useUsername();
 
-  const [user, setUser] = useState("");
   const router = useRouter();
   const { addToast } = useToasts();
   const form = useForm();
