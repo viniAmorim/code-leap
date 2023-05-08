@@ -32,6 +32,7 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
 
   const [hasNextPage, setHasNextPage] = useState(true);
   const [page, setPage] = useState(1);
+  const [offSet, setOffSet] = useState(0);
 
   const { addToast } = useToasts();
   const form = useForm();
@@ -43,35 +44,23 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
   const getData = () => {
     if (!hasNextPage) return;
 
-    const getPostsURL = `https://dev.codeleap.co.uk/careers/`;
+    const getPostsURL = `https://dev.codeleap.co.uk/careers/?offset=${offSet}`;
     axios.get(getPostsURL).then(({ data: { results, count } }) => {
       if (results) {
-        if (count === results.length) {
+        if (count === posts.length + results.length) {
           setHasNextPage(false);
         }
 
         setPosts(posts => [...posts, ...results]);
         setPage(page => page + 1);
+        setOffSet(offSet => offSet + 10);       
       }
     });
   };
-    /*if (!hasNextPage) return;
-    fetch("https://dev.codeleap.co.uk/careers/")
-      .then((response) => response.json())
-      .then((data) => {
-        if(data) {
-          if (data.count === posts.length) {
-            setHasNextPage(false);
-          }
-        }
-        setPosts(data);
-        setPage(page => page + 1);
-      });
-  }*/
 
   const loadMoreData = () => {
     if (page > 1) {
-        getData();
+      getData();
     }
 };
 
