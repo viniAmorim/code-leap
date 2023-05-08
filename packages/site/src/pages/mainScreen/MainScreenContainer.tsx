@@ -44,18 +44,23 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
   const getData = () => {
     if (!hasNextPage) return;
 
-    const getPostsURL = `https://dev.codeleap.co.uk/careers/?offset=${offSet}`;
-    axios.get(getPostsURL).then(({ data: { results, count } }) => {
-      if (results) {
-        if (count === posts.length + results.length) {
-          setHasNextPage(false);
-        }
+    try {
+      const getPostsURL = `https://dev.codeleap.co.uk/careers/?offset=${offSet}`;
+      axios.get(getPostsURL).then(({ data: { results, count } }) => {
+        if (results) {
+          if (count === posts.length + results.length) {
+            setHasNextPage(false);
+          }
 
-        setPosts(posts => [...posts, ...results]);
-        setPage(page => page + 1);
-        setOffSet(offSet => offSet + 10);       
-      }
-    });
+          setPosts(posts => [...posts, ...results]);
+          setPage(page => page + 1);
+          setOffSet(offSet => offSet + 10);       
+        }
+      });
+    } catch(e) {
+      console.log(e);
+    }
+    
   };
 
   const loadMoreData = () => {
@@ -84,23 +89,30 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
   const handleSavePost = (values: CardPostFormValues) => {
     const { title, content } = values;
 
-    fetch("http://dev.codeleap.co.uk/careers/", {
-      method: "post",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-
-      body: JSON.stringify({
-        username: username?.username,
-        title: title,
-        content: content
+    try {
+      fetch("http://dev.codeleap.co.uk/careers/", {
+        method: "post",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+  
+        body: JSON.stringify({
+          username: username?.username,
+          title: title,
+          content: content
+        })
       })
-    })
-    .then( (response) => { 
-      console.log("Post criado");
-      handlePostSuccess();
-    });
+      .then( (response) => { 
+        console.log("Post criado");
+        handlePostSuccess();
+      });
+    } catch(e){
+      console.log(e);
+      handleFail(e);
+    }
+
+    console.log("Save post");
   }
 
   const handlePostDelete = (id: number) => {

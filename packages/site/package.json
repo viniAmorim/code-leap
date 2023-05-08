@@ -10,14 +10,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "@site/uikit": "1.0.0",
     "aws-amplify": "^4.2.0",
     "date-fns": "^2.23.0",
     "dotenv": "^10.0.0",
     "graphql": "^15.5.0",
     "next": "11.0.1",
+    "next-redux-wrapper": "^8.1.0",
     "react-hook-form": "^7.15.0",
     "react-loading-skeleton": "^2.2.0",
+    "react-redux": "^8.0.5",
     "react-toast-notifications": "^2.5.1",
     "react-trello": "^2.2.11",
     "react-vertical-timeline-component": "^3.3.3",
