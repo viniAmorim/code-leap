@@ -7,8 +7,5 @@ export { default as Input } from './Input';
 export { default as Link } from './Link';
 export { default as Modal } from './Modal';
 export { default as Navbar } from './Navbar';
-export { default as Pagination } from './Pagination';
 export { default as Paragraph } from './Paragraph';
-export { default as Select } from './Select';
-export { default as Tab } from './Tab';
 export { default as PostCard } from './PostCard';

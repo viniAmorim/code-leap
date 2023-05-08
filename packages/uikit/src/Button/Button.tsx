@@ -51,14 +51,6 @@ const Button = forwardRef<any, ButtonProps>(
       >
         <Styled.IconWrapper>{icon}</Styled.IconWrapper>
         {children}
-        {isLoading && (
-          <Loader
-            type="TailSpin"
-            color={theme.colors['blue-400']}
-            height={15}
-            width={15}
-          />
-        )}
       </Styled.Button>
     );
   },

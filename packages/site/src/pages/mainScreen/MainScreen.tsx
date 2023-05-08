@@ -13,6 +13,8 @@ import { Card, Button, FormControl, Input, PostCard, Modal } from '@site/uikit';
 import { Layout } from '~/app/components';
 
 import * as Styled from './styles';
+import { useSelector } from 'react-redux';
+import { LoginState } from 'redux/store';
 
 export interface CardPostFormValues {
   title: string;
@@ -55,7 +57,7 @@ function MainScreen({
   label, 
   }: CardProps) {
   const router = useRouter();
-  const { username } = useUsername();
+  const user = useSelector((state: LoginState) => state.user);
 
   function handlePostHour(date) {
     const now = new Date(); 
@@ -135,7 +137,7 @@ function MainScreen({
                 <Styled.Title>
                   {post.title}
                 </Styled.Title>
-                {username?.username == post.username && (<Styled.WrapperButtons>
+                {user.username == post.username && (<Styled.WrapperButtons>
                   <Modal
                     label={<FaTrash />}
                     title="Are you sure you want to delete this item?"

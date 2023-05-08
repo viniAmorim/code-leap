@@ -3,7 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useToasts } from 'react-toast-notifications'; 
 import { useRouter } from 'next/router';
 
-import { useUsername } from "../../hooks/useUsername";
+import { useDispatch } from "react-redux";
+
 
 import SignUp from './SignUp';
 
@@ -17,7 +18,7 @@ interface SingUpProps {
 }
 
 function SingUpContainer({ onRefresh, label }: SingUpProps) {
-  const { createUsername } = useUsername();
+  const dispatch = useDispatch();
 
   const router = useRouter();
   const { addToast } = useToasts();
@@ -46,10 +47,9 @@ function SingUpContainer({ onRefresh, label }: SingUpProps) {
 
   const handleSignUp = (values: SignUpFormValues) => {
     const { username } = values;
-    createUsername({username});
+    dispatch({ type: 'login', user: { username } })
     router.push('/main-screen');
   }
-
 
   return (
     <SignUp

@@ -21,7 +21,7 @@ export const StyledCol = styled(Col)`
   border-radius: 16px;
  
   margin: 200px;
-  padding: 10px;
+  padding: 30px;
 `;
 
 export const ButtonContainer = styled.div`

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import { useToasts } from 'react-toast-notifications';
-
-import { useUsername } from "../../hooks/useUsername";
+import { LoginState } from '../../../redux/store';
 
 import MainScreen from './MainScreen';
 
@@ -27,7 +27,9 @@ interface IRepository {
 }
 
 function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
-  const { username } = useUsername();
+  const user = useSelector((state: LoginState) => state.user);
+
+  console.log(user, 'user')
   const [posts, setPosts] = useState<IRepository[]>([]);
 
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -98,7 +100,7 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
         },
   
         body: JSON.stringify({
-          username: username?.username,
+          username: user.username,
           title: title,
           content: content
         })

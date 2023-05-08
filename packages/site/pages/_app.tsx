@@ -5,6 +5,10 @@ import { UsernameProvider } from "../src/hooks/useUsername";
 
 import { Alert } from '@site/uikit';
 
+import { Provider, useStore } from "react-redux";
+
+import { store } from '../redux/store';
+
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
@@ -28,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <UsernameProvider>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <ToastProvider components={{ Toast: Alert }}>
           <Head>
@@ -43,7 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </ToastProvider>
       </ThemeProvider>
-    </UsernameProvider>
+    </Provider>
   );
 }
 export default MyApp;
