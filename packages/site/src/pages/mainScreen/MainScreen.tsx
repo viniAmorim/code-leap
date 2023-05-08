@@ -76,7 +76,7 @@ function MainScreen({
       return `${days} day(s) ago`;
     }
   }
-  console.log(posts);
+  console.log(posts)
   return (
     <Layout>
       <Container>

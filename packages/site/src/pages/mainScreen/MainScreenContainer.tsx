@@ -101,10 +101,6 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
       console.log("Post criado");
       handlePostSuccess();
     });
-
-    console.log(username);
-    console.log(title);
-    console.log(content);
   }
 
   const handlePostDelete = (id: number) => {
