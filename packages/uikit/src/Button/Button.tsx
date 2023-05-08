@@ -49,7 +49,6 @@ const Button = forwardRef<any, ButtonProps>(
         disabled={disabled || isLoading}
         {...rest}
       >
-        <Styled.IconWrapper>{icon}</Styled.IconWrapper>
         {children}
       </Styled.Button>
     );

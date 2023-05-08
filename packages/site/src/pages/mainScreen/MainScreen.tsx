@@ -137,7 +137,7 @@ function MainScreen({
                 <Styled.Title>
                   {post.title}
                 </Styled.Title>
-                {user.username == post.username && (<Styled.WrapperButtons>
+                {user?.username == post.username && (<Styled.WrapperButtons>
                   <Modal
                     label={<FaTrash />}
                     title="Are you sure you want to delete this item?"

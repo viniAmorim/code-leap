@@ -11,11 +11,19 @@ export const FormControl = styled.div`
 `;
 
 export const FormControlLabel = styled.label<StyledFormControlProps>`
-  color: ${({ theme }) => theme.colors['blue-100']};
-  height: 24px;
-  margin: 6px 0px;
-  width: 229px;
-  ${({ theme }) => theme.typography['subheader-heavy']};
+  width: 199px;
+  height: 19px;
+  margin-bottom: 8px;
+
+  margin-left: 24px;
+
+  color: ${({ theme }) => theme.colors.black};
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
 `;
 
 export const FormControlError = styled.label`

@@ -1,8 +1,10 @@
 import { Button } from '@site/uikit';
 import styled from 'styled-components';
-import { Row, Col } from 'react-grid-system';
+import { Container, Row, Col } from 'react-grid-system';
 
-export const Container = styled.div`
+import { Heading } from '@site/uikit';
+
+export const StyledContainer = styled(Container)`
   display: flex;
   justify-content: center;
   display: -webkit-flexbox;
@@ -12,7 +14,6 @@ export const Container = styled.div`
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  height: 100%;
 `;
 
 export const StyledCol = styled(Col)`
@@ -24,8 +25,26 @@ export const StyledCol = styled(Col)`
   padding: 30px;
 `;
 
+export const StyledHeading = styled(Heading)`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+  margin-bottom: 24px;
+  margin-left: 24px;
+`;
+
+export const StyledButton = styled(Button)`
+  width: 111px;
+  height: 32px;
+`;
+
 export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: right;
+
+  padding-right: 24px;
   margin-top: 16px;
-  text-align: right;
   width: 100%;
 `;

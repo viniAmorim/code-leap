@@ -26,6 +26,9 @@ const InputCss = css`
   border: 1px solid ${({ theme }) => theme.colors['gray-400']};
   border-radius: 4px;
   padding: 12px 16px;
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-bottom: 24px;
 
   &:focus,
   &:hover {

@@ -11,7 +11,16 @@ export const StyledRow = styled(Row)`
 `;
 
 export const StyledHeading = styled(Heading)`
-  color: ${({ theme }) => theme.colors['blue-100']};
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+
+  margin-left: 24px;
+  margin-bottom: 24px;
+
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const Paragraph = styled.p`
@@ -29,8 +38,11 @@ export const ContentRow = styled(Row)`
 `;
 
 export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: right;
+
+  padding-right: 24px;
   margin-top: 16px;
-  text-align: right;
   width: 100%;
 `;
 
@@ -98,7 +110,7 @@ export const Title = styled(Heading)`
   line-height: 26px;
 
   padding-left: 10px;
-  margin: 10px;
+  margin: 10px 10px 10px 24px;
   color: ${({ theme }) => theme.colors.white};
 `;
 
@@ -126,6 +138,7 @@ export const Info = styled.div`
 `;
 
 export const Username = styled(Heading)`
+  margin-left: 24px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
@@ -143,6 +156,8 @@ export const HourPost = styled(Heading)`
   text-align: right;
   align-items: flex-end;
 
+  margin-right: 24px;
+
   color:${({ theme }) => theme.colors['gray-200']};
 `;
 
@@ -153,6 +168,8 @@ export const Content = styled.div`
   font-size: 18px;
   line-height: 21px;
   margin-top: 10px;
+
+  margin-left: 24px;
 
   color:${({ theme }) => theme.colors.black};
 `;

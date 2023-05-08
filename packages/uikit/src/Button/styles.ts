@@ -46,7 +46,7 @@ const variantModifier = {
 
 const sizeModifier = {
   medium: css`
-    padding: 8px 16px;
+    padding: 8px 30px;
     ${({ theme }) => theme.typography['subheader-heavy']};
   `,
   small: css`
