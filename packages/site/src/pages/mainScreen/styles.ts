@@ -41,18 +41,32 @@ export const CancelButton = styled(Button)`
   border: 1px solid ${({ theme }) => theme.colors['gray-300']};
   color: ${({ theme }) => theme.colors.black};
   border-radius: 8px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors['gray-500']};
+  }
 `;
 
 export const DeleteButton = styled(Button)`
   background: ${({ theme }) => theme.colors.delete};
   border-radius: 8px;
   border-color: ${({ theme }) => theme.colors.delete};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.error};
+    border-color: ${({ theme }) => theme.colors.delete};
+  }
 `;
 
 export const SaveButton = styled(Button)`
   background: ${({ theme }) => theme.colors.save};
   border-radius: 8px;
   border-color: ${({ theme }) => theme.colors.save};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.success};
+    border-color: ${({ theme }) => theme.colors.success};
+  }
 `;
 
 export const PostCard = styled.div`

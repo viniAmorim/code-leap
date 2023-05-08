@@ -76,7 +76,8 @@ function MainScreen({
       return `${days} day(s) ago`;
     }
   }
-  console.log(posts)
+  console.log(posts);
+
   return (
     <Layout>
       <Container>
@@ -207,7 +208,7 @@ function MainScreen({
                         />
                       </FormControl>
                       <Styled.ButtonContainer>
-                        <Styled.CancelButton isLoading={isLoading} type="submit">
+                        <Styled.CancelButton isLoading={isLoading}>
                           Cancel
                         </Styled.CancelButton>
                         <Styled.SaveButton isLoading={isLoading} type="submit">
