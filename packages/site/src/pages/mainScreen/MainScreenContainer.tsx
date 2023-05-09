@@ -90,7 +90,7 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
     const { title, content } = values;
 
     try {
-      fetch("http://dev.codeleap.co.uk/careers/", {
+      fetch("https://dev.codeleap.co.uk/careers/", {
         method: "post",
         headers: {
           'Accept': 'application/json',

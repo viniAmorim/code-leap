@@ -77,6 +77,7 @@ function MainScreen({
     }
   }
   console.log(posts);
+  console.log(user);
 
   return (
     <Layout>
