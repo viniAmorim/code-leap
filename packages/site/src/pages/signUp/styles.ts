@@ -7,21 +7,16 @@ import { Heading } from '@site/uikit';
 export const StyledContainer = styled(Container)`
   display: flex;
   justify-content: center;
-  display: -webkit-flexbox;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  -webkit-flex-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
   align-items: center;
+  height: 100%;
 `;
 
 export const StyledCol = styled(Col)`
   background: #FFFFFF;
   border: 1px solid #CCCCCC;
   border-radius: 16px;
- 
-  margin: 200px;
+
+  margin-top: 200px;
   padding: 30px;
 `;
 

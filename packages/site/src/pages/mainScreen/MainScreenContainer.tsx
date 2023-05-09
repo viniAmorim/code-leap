@@ -29,7 +29,6 @@ interface IRepository {
 function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
   const user = useSelector((state: LoginState) => state.user);
 
-  console.log(user, 'user')
   const [posts, setPosts] = useState<IRepository[]>([]);
 
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -77,7 +76,6 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
       appearance: 'success',
       autoDismiss: true,
     });
-    // onRefresh();
   };
 
   const handleFail = (error: Error) => {
@@ -113,8 +111,6 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
       console.log(e);
       handleFail(e);
     }
-
-    console.log("Save post");
   }
 
   const handlePostDelete = (id: number) => {
@@ -126,7 +122,6 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
       appearance: 'success',
       autoDismiss: true,
     }))
-    console.log(id);
   }
 
   const handlePostEdit = ({ id, title, content }) => {

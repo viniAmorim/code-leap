@@ -21,7 +21,7 @@ const Layout = ({ children }: LayoutProps) => {
     <Styled.Content>
       <Navbar>
         <Button 
-          variant="ghost" 
+          variant="ghost"  
           onClick={() => {
             dispatch({ type: 'logout'})
             router.push('/');
