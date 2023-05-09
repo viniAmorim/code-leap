@@ -99,14 +99,14 @@ function MainScreen({
                     required: true,
                     minLength: {
                       value: 5,
-                      message: 'title is required',
+                      message: 'Title is required',
                     },
                   })}
                 />
               </FormControl>
               <FormControl
                 label="Content"
-                error={form.formState.errors?.title?.message}
+                error={form.formState.errors?.content?.message}
               >
                 <Input
                   name="content"
@@ -115,7 +115,7 @@ function MainScreen({
                     required: true,
                     minLength: {
                       value: 5,
-                      message: 'content is required',
+                      message: 'Content is required',
                     },
                   })}
                 />

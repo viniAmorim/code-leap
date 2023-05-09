@@ -98,7 +98,7 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
         },
   
         body: JSON.stringify({
-          username: user.username,
+          username: user?.username,
           title: title,
           content: content
         })
