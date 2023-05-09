@@ -76,8 +76,6 @@ function MainScreen({
       return `${days} day(s) ago`;
     }
   }
-  console.log(posts);
-  console.log(user);
 
   return (
     <Layout>
