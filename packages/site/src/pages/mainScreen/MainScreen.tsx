@@ -1,4 +1,4 @@
-import React, { Ref } from 'react';
+import React, { BaseHTMLAttributes, Ref, useRef } from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -27,7 +27,7 @@ interface Posts {
   content: string;
 }
 
-export interface CardProps {
+export interface CardProps extends BaseHTMLAttributes<HTMLDivElement>{
   onSavePost: (values: CardPostFormValues) => void;
   onPostDelete: (id: number) => void;
   onPostEdit: (data: {}) => void;
@@ -145,7 +145,7 @@ function MainScreen({
                     ref={modalRef}
                   >
                     <Styled.ButtonContainer>
-                      <Styled.CancelButton isLoading={isLoading}>
+                      <Styled.CancelButton isLoading={isLoading} >
                         Cancel
                       </Styled.CancelButton>
                       <Styled.DeleteButton isLoading={isLoading} onClick={() => onPostDelete(post.id)}>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useToasts } from 'react-toast-notifications';
@@ -37,6 +37,9 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
 
   const { addToast } = useToasts();
   const form = useForm();
+  const modalRef = useRef<{
+    closeModal: () => void;
+  }>();
 
   useEffect(() => {
     getData();
@@ -70,12 +73,14 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
     }
 };
 
-  const handlePostSuccess = () => {
+  const handleSuccess = () => {
+    modalRef.current.closeModal();
     form.reset();
     addToast('successfully.', {
       appearance: 'success',
       autoDismiss: true,
     });
+    // onRefresh();
   };
 
   const handleFail = (error: Error) => {
@@ -105,7 +110,7 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
       })
       .then( (response) => { 
         console.log("Post criado");
-        handlePostSuccess();
+        handleSuccess();
       });
     } catch(e){
       console.log(e);
@@ -122,6 +127,7 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
       appearance: 'success',
       autoDismiss: true,
     }))
+    handleSuccess();
   }
 
   const handlePostEdit = ({ id, title, content }) => {
@@ -137,7 +143,7 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
     })
   .then((response) => {
     response.json()
-    handlePostSuccess();
+    handleSuccess();
   })
   .then((json) => console.log(json));
   }
@@ -150,6 +156,7 @@ function MainScreenContainer({ onRefresh, label }: MainScreenProps) {
       onPostEdit={handlePostEdit}
       loadMoreData={loadMoreData}
       hasNextPage={hasNextPage}
+      modalRef={modalRef}
       isLoading={false}
       form={form}
       editForm={form}
