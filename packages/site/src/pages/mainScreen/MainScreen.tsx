@@ -2,8 +2,6 @@ import React, { Ref } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { useUsername } from "../../hooks/useUsername";
-
 import { Container, Row, Col } from 'react-grid-system';
 import { Waypoint } from 'react-waypoint';
 import { UseFormReturn } from 'react-hook-form';
