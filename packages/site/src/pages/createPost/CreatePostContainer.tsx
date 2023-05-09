@@ -42,7 +42,7 @@ function CreatePostContainer({ onRefresh, label }: MainScreenProps) {
   const handleSavePost = (values: CardPostFormValues) => {
     const { title, content } = values;
 
-    fetch("http://dev.codeleap.co.uk/careers/", {
+    fetch("https://dev.codeleap.co.uk/careers/", {
       method: "post",
       headers: {
         'Accept': 'application/json',

@@ -115,7 +115,7 @@ const Modal = forwardRef<any, ModalProps>(
           {...rest}
         >
           <Styled.HeadingContainer>
-            <Heading size="headline">{title}</Heading>
+            <Styled.StyledHeading size="headline">{title}</Styled.StyledHeading>
           </Styled.HeadingContainer>
           {children}
         </ReactModal>
